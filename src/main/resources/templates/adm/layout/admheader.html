@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <!--- menu -->
+    <div class="sidebar">
+        <div class="logo">
+            <h1>탄소뱅크</h1>
+        </div>
+        <ul id="side-lnb" class="side-lnb">
+            <li class="open"> <!-- 현재상태 메뉴 open -->
+                <div class="link">
+                    <a href="#" class="active"><i class="iconfont">article</i> 가맹점 관리</a> <!-- 현재상태 메뉴 active -->
+                </div>
+                <ul class="submenu">
+                    <li><a href="/adm/store/StoreInfoMainList.do"
+						   data-match="^/adm/store/StoreInfo(MainList|Ins|Desc)\.do$" 
+						>가맹점 관리</a></li> <!-- 현재상태 메뉴 active -->
+                </ul>
+            </li>
+            <li class="open"> <!-- 현재상태 메뉴 open -->
+                <div class="link">
+                    <a href="#" class="active"><i class="iconfont">article</i> 컨텐츠 관리</a> <!-- 현재상태 메뉴 active -->
+                </div>
+                <ul class="submenu">
+                    <li><a href="/adm/content/NoticeMainList.do" 
+						   data-match="^/adm/content/Notice(MainList|Ins|Desc)\.do$"
+						>공지사항</a></li> <!-- 현재상태 메뉴 active -->
+                    <li><a href="/adm/content/EnvNewsMainList.do"
+						   data-match="^/adm/content/EnvNews(MainList|Ins|Desc)\.do$" 
+						>환경뉴스 관리</a></li>
+                    <li><a href="/adm/content/HotNewsMainList.do"
+						   data-match="^/adm/content/HotNews(MainList|Ins|Desc)\.do$" 
+						>기관 핫뉴스 관리</a></li>
+					<li><a href="/adm/content/MunicipalNewsMainList.do"
+						   data-match="^/adm/content/MunicipalNews(MainList|Ins|Desc)\.do$" 
+						>시정뉴스 관리</a></li>
+					<li><a href="/adm/content/MunicipalVideoMainList.do"
+						   data-match="^/adm/content/MunicipalVideo(MainList|Ins|Desc)\.do$" 
+						>시정활동 영상 관리</a></li>
+					<li><a href="/adm/content/PushMsgMainList.do"
+						   data-match="^/adm/content/PushMsg(MainList|Ins|Desc)\.do$"
+						>알림 관리</a></li>
+					<li><a href="/adm/content/EventMainList.do" 
+						   data-match="^/adm/content/Event(MainList|Ins|Desc)\.do$"
+						>이벤트 관리</a></li>
+					<li><a href="/adm/content/FaqMainList.do"
+						   data-match="^/adm/content/Faq(MainList|Ins|Desc)\.do$" 
+						>자주하는 질문</a></li>
+					<li><a href="/adm/content/QnaMainList.do"
+						   data-match="^/adm/content/Qna(MainList|Ins|Desc)\.do$" 
+						>문의 및 제안</a></li>
+                </ul>
+            </li>
+<!--             
+            <li>
+                <div class="link">
+                    <a href="#"><i class="iconfont">task</i> 메뉴명</a>
+                </div>
+                <ul class="submenu">
+                    <li><a href="#">서브메뉴 1</a></li>
+                    <li><a href="#">서브메뉴 2</a></li>
+                    <li><a href="#">서브메뉴 3</a></li>
+                </ul>
+            </li>
+			
+ -->            
+        </ul>
+    </div>
+
+	<script>
+
+	
+	document.addEventListener('DOMContentLoaded', function() {
+	    var currentPath = window.location.pathname;
+	    var menuLinks = document.querySelectorAll('.side-lnb a');
+
+	    menuLinks.forEach(function(link) {
+	        var pattern = link.getAttribute('data-match');
+	        if (pattern) {
+	            var regex = new RegExp(pattern);
+	            if (regex.test(currentPath)) {
+	                menuLinks.forEach(function(l) { l.classList.remove('active'); });
+	                link.classList.add('active');
+	                var parentLi = link.closest('li');
+	                if (parentLi) parentLi.classList.add('open');
+	            }
+	        } else {
+	            var linkPath = link.getAttribute('href');
+	            if (linkPath && currentPath.startsWith(linkPath)) {
+	                menuLinks.forEach(function(l) { l.classList.remove('active'); });
+	                link.classList.add('active');
+	                var parentLi = link.closest('li');
+	                if (parentLi) parentLi.classList.add('open');
+	            }
+	        }
+	    });
+	});
+		
+	</script>
+</html>
