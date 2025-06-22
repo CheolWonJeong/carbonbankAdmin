@@ -123,6 +123,13 @@
 		    <artifactId>HikariCP</artifactId>
 		</dependency>
 
+		 <!-- kakaoMap 연동 시 필요 dependency-->
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.5.14</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
